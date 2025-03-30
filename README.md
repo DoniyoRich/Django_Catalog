@@ -14,7 +14,7 @@
 
 1. Клонируйте репозиторий:
 ```python
-https://github.com/DoniyoRich/Django_catalog.git
+https://github.com/DoniyoRich/Django_Catalog.git
 ```
 
 2. Установите зависимости:
