@@ -4,5 +4,7 @@ venv/
 config/__pycache__/
 catalog/__pycache__/
 catalog/migrations/__pycache__/
+catalog/management/__pycache__/
+catalog/management/commands/__pycache__/
 .env
 db.sqlite3

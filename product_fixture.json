@@ -53,19 +53,6 @@
 },
 {
     "model": "catalog.product",
-    "pk": 6,
-    "fields": {
-        "name": "LG",
-        "description": "Телевизор 50-дюймов LG",
-        "image": "",
-        "category": 3,
-        "price": 50000.0,
-        "created_at": "2024-10-10",
-        "updated_at": "2024-10-10"
-    }
-},
-{
-    "model": "catalog.product",
     "pk": 7,
     "fields": {
         "name": "СберТВ",
@@ -101,6 +88,45 @@
         "price": 35000.0,
         "created_at": "2024-12-12",
         "updated_at": "2024-12-12"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 11,
+    "fields": {
+        "name": "Samsung",
+        "description": "Последние флагманы Samsung",
+        "image": "",
+        "category": 2,
+        "price": 180000.0,
+        "created_at": "2025-01-01",
+        "updated_at": "2025-01-01"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 12,
+    "fields": {
+        "name": "IPhone",
+        "description": "Топовые айфоны PRO MAX",
+        "image": "",
+        "category": 2,
+        "price": 210000.0,
+        "created_at": "2024-12-12",
+        "updated_at": "2024-12-12"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 13,
+    "fields": {
+        "name": "Poco",
+        "description": "Лучшие телефоны из Азии",
+        "image": "",
+        "category": 2,
+        "price": 90000.0,
+        "created_at": "2025-02-02",
+        "updated_at": "2025-02-02"
     }
 }
 ]
