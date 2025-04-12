@@ -5,14 +5,14 @@ from .models import Blog
 
 
 class BlogList(ListView):
-    """ Класс отображения списка продуктов. """
+    """ Класс отображения списка статей. """
     model = Blog
     template_name = 'blogs/blogs.html'
     context_object_name = 'blogs'
 
 
 class OnlyPublishedBlogs(ListView):
-    """ Класс отображения списка продуктов. """
+    """ Класс отображения только опубликованных статей. """
     model = Blog
     template_name = 'blogs/blogs.html'
     context_object_name = 'blogs'
@@ -23,7 +23,7 @@ class OnlyPublishedBlogs(ListView):
 
 
 class BlogDetail(DetailView):
-    """ Класс отображения подробной информации о продукте. """
+    """ Класс отображения подробной информации о статье. """
     model = Blog
     template_name = 'blogs/blog_detail.html'
     context_object_name = 'blog'
@@ -36,7 +36,7 @@ class BlogDetail(DetailView):
 
 
 class NewBlog(CreateView):
-    """ Класс добавления нового продукта. """
+    """ Класс добавления новой статьи. """
     model = Blog
     template_name = 'blogs/blog_form.html'
     fields = ['title', 'content', 'image', 'is_published']
@@ -44,7 +44,7 @@ class NewBlog(CreateView):
 
 
 class UpdateBlog(UpdateView):
-    """ Класс изменения данных о продукте. """
+    """ Класс изменения данных о статье. """
     model = Blog
     template_name = 'blogs/Blog_form.html'
     fields = ['title', 'content', 'image', 'is_published']
@@ -54,11 +54,7 @@ class UpdateBlog(UpdateView):
 
 
 class DeleteBlog(DeleteView):
-    """ Класс удаления продукта. """
+    """ Класс удаления статьи. """
     model = Blog
     template_name = 'blogs/blog_confirm_delete.html'
     success_url = reverse_lazy('blogs:blogs')
-
-# class Contacts(TemplateView):
-#     """ Класс отображения страницы Контактов. """
-#     template_name = "catalog/contacts.html"
