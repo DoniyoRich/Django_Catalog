@@ -13,9 +13,3 @@ urlpatterns = [
     path("delete_product/<int:pk>", DeleteProduct.as_view(), name="delete_product"),
     path("contacts/", Contacts.as_view(), name="contacts"),
 ]
-
-# urlpatterns = [
-#     path("", views.catalog, name="catalog"),
-#     path("product_detail/<int:pk>", views.product_detail, name="product_detail"),
-#     path("contacts/", views.contacts, name="contacts"),
-# ]
