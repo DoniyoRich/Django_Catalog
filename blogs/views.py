@@ -1,6 +1,8 @@
+from django.core.mail import send_mail
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
+from config.settings import DEFAULT_FROM_EMAIL, EMAIL_RECIPIENT
 from .models import Blog
 
 
@@ -31,6 +33,14 @@ class BlogDetail(DetailView):
     def get_object(self, queryset=None):
         self.object = super().get_object(queryset)
         self.object.views_count += 1
+        if self.object.views_count == 10:
+            send_mail(
+                f'Уведомление о количестве просмотров статьи',
+                f'Поздравляю! Количество просмотров статьи "{self.object.title}" достигло {self.object.views_count}.',
+                DEFAULT_FROM_EMAIL,
+                [EMAIL_RECIPIENT],
+                fail_silently=False,
+            )
         self.object.save()
         return self.object
 

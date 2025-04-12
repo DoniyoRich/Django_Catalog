@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
-from django.core.management.utils import get_random_secret_key
 
+from django.core.management.utils import get_random_secret_key
 from dotenv import load_dotenv
 
 load_dotenv(override=True)
@@ -14,6 +14,16 @@ SECRET_KEY = get_random_secret_key()
 DEBUG = os.getenv("DEBUG") == "True"
 
 ALLOWED_HOSTS = []
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = os.getenv("EMAIL_HOST")
+EMAIL_PORT = os.getenv("EMAIL_PORT")
+EMAIL_USE_SSL = os.getenv("EMAIL_USE_SSL") == "True"
+EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL")
+EMAIL_RECIPIENT = os.getenv("EMAIL_RECIPIENT")
 
 INSTALLED_APPS = [
     "django.contrib.admin",

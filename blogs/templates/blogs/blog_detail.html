@@ -13,6 +13,7 @@
             <div class="card-body" style="width: 100%">
                 <p class="card-text"><b></b> {{ blog.content }}</p>
                 <p class="card-text"><b>Дата создания:</b> {{ blog.created_at }}</p>
+                <p class="card-text"><b>Дата обновления:</b> {{ blog.updated_at }}</p>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                         <a class="btn btn-primary" href="{% url 'blogs:blogs' %}" role="button">К списку статей</a>
