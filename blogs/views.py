@@ -1,4 +1,4 @@
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
 from .models import Blog
@@ -11,11 +11,28 @@ class BlogList(ListView):
     context_object_name = 'blogs'
 
 
+class OnlyPublishedBlogs(ListView):
+    """ Класс отображения списка продуктов. """
+    model = Blog
+    template_name = 'blogs/blogs.html'
+    context_object_name = 'blogs'
+
+    def get_queryset(self):
+        queryset = Blog.objects.filter(is_published=True)
+        return queryset
+
+
 class BlogDetail(DetailView):
     """ Класс отображения подробной информации о продукте. """
     model = Blog
     template_name = 'blogs/blog_detail.html'
     context_object_name = 'blog'
+
+    def get_object(self, queryset=None):
+        self.object = super().get_object(queryset)
+        self.object.views_count += 1
+        self.object.save()
+        return self.object
 
 
 class NewBlog(CreateView):
@@ -31,7 +48,9 @@ class UpdateBlog(UpdateView):
     model = Blog
     template_name = 'blogs/Blog_form.html'
     fields = ['title', 'content', 'image', 'is_published']
-    success_url = reverse_lazy('blogs:blogs')
+
+    def get_success_url(self):
+        return reverse('blogs:blog_detail', args=[self.kwargs.get('pk')])
 
 
 class DeleteBlog(DeleteView):
