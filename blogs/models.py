@@ -5,8 +5,7 @@ class Blog(models.Model):
     """ Класс Блога. """
     title = models.CharField(
         max_length=150,
-        verbose_name="Заголовок",
-        help_text="Заголовок",
+        verbose_name="Заголовок"
     )
     content = models.TextField(
         verbose_name="Содержимое", help_text="Текст блога"
@@ -15,8 +14,7 @@ class Blog(models.Model):
         upload_to="photos/blogs",
         verbose_name="Изображение",
         blank=True,
-        null=True,
-        help_text="Загрузите изображение",
+        null=True
     )
     created_at = models.DateField(
         verbose_name="Дата создания", help_text="Дата создания", auto_now_add=True
@@ -25,7 +23,7 @@ class Blog(models.Model):
         verbose_name="Дата последнего изменения", help_text="Дата изменения", auto_now=True
     )
     is_published = models.BooleanField(default=False, verbose_name="Опубликовано")
-    views = models.IntegerField(default=0)
+    views_count = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
@@ -33,4 +31,4 @@ class Blog(models.Model):
     class Meta:
         verbose_name = "Блог"
         verbose_name_plural = "Блоги"
-        ordering = ["title", "is_published", "created_at", "updated_at", 'views']
+        ordering = ["title", "is_published", "created_at", "updated_at", 'views_count']

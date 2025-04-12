@@ -7,6 +7,7 @@ from django.conf import settings
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("catalog.urls", namespace="catalog")),
+    path("blogs/", include("blogs.urls", namespace="blogs")),
 ]
 
 if settings.DEBUG:
