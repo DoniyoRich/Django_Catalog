@@ -1,6 +1,7 @@
 .venv/
 venv/
 .idea/
+/__pycache__/
 config/__pycache__/
 catalog/__pycache__/
 catalog/migrations/__pycache__/
