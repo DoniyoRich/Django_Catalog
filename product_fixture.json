@@ -1,0 +1,132 @@
+[
+{
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+        "name": "ASUS",
+        "description": "Супер ноутбук ASUS",
+        "image": "photos/products/note1_4uRsU14.png",
+        "category": 1,
+        "price": 85000.0,
+        "created_at": "2025-01-05",
+        "updated_at": "2025-01-05"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+        "name": "SONY",
+        "description": "Быстрый ноутбук SONY VAIO",
+        "image": "photos/products/note2_ZOPPbuf.png",
+        "category": 1,
+        "price": 95000.0,
+        "created_at": "2025-02-01",
+        "updated_at": "2025-02-01"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+        "name": "DELL",
+        "description": "Ультрабук DELL",
+        "image": "",
+        "category": 1,
+        "price": 100000.0,
+        "created_at": "2025-03-05",
+        "updated_at": "2025-03-05"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+        "name": "Xiomi",
+        "description": "Оригинальный ноутбук Xiomi",
+        "image": "",
+        "category": 1,
+        "price": 100000.0,
+        "created_at": "2025-02-10",
+        "updated_at": "2025-02-10"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 7,
+    "fields": {
+        "name": "СберТВ",
+        "description": "Новейший телевизор Сбер",
+        "image": "",
+        "category": 3,
+        "price": 45000.0,
+        "created_at": "2024-10-10",
+        "updated_at": "2024-10-10"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 8,
+    "fields": {
+        "name": "TOSHIBA",
+        "description": "Японский телевизор Toshiba",
+        "image": "",
+        "category": 3,
+        "price": 60000.0,
+        "created_at": "2024-10-10",
+        "updated_at": "2024-10-10"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 9,
+    "fields": {
+        "name": "HISENSE",
+        "description": "Новый китайский телевизор HISENSE",
+        "image": "",
+        "category": 3,
+        "price": 35000.0,
+        "created_at": "2024-12-12",
+        "updated_at": "2024-12-12"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 11,
+    "fields": {
+        "name": "Samsung",
+        "description": "Последние флагманы Samsung",
+        "image": "",
+        "category": 2,
+        "price": 180000.0,
+        "created_at": "2025-01-01",
+        "updated_at": "2025-01-01"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 12,
+    "fields": {
+        "name": "IPhone",
+        "description": "Топовые айфоны PRO MAX",
+        "image": "",
+        "category": 2,
+        "price": 210000.0,
+        "created_at": "2024-12-12",
+        "updated_at": "2024-12-12"
+    }
+},
+{
+    "model": "catalog.product",
+    "pk": 13,
+    "fields": {
+        "name": "Poco",
+        "description": "Лучшие телефоны из Азии",
+        "image": "",
+        "category": 2,
+        "price": 90000.0,
+        "created_at": "2025-02-02",
+        "updated_at": "2025-02-02"
+    }
+}
+]

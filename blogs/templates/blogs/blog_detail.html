@@ -1,0 +1,30 @@
+{% extends 'blogs/base.html' %}
+{% load my_tags %}
+
+{% block content %}
+
+<div class="container">
+    <div class="col">
+        <div style="display: flex">
+            <img src="{{ blog.image | media_filter }}" style="width: 100px">
+            <h4 style="margin-left: 20px"><b>{{ blog.title }}</b></h4>
+        </div>
+        <div class="card shadow-sm">
+            <div class="card-body" style="width: 100%">
+                <p class="card-text"><b></b> {{ blog.content }}</p>
+                <p class="card-text"><b>Дата создания:</b> {{ blog.created_at }}</p>
+                <p class="card-text"><b>Дата обновления:</b> {{ blog.updated_at }}</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+                        <a class="btn btn-primary" href="{% url 'blogs:blogs' %}" role="button">К списку статей</a>
+                        <a class="btn btn-primary" href="{% url 'blogs:update_blog' blog.pk %}"
+                           role="button">Изменить</a>
+                        <a class="btn btn-primary" href="{% url 'blogs:delete_blog' blog.pk %}"
+                           role="button">Удалить</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock%}
