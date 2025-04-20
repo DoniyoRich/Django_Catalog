@@ -10,7 +10,7 @@
 <div class="container">
     <div class="row">
         <div class="col-6">
-            <h2>Новый продукт</h2>
+            <h2>Новая категория</h2>
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ form.as_p }}
@@ -19,5 +19,6 @@
             </form>
         </div>
     </div>
+
 </div>
 {% endblock%}
