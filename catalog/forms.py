@@ -55,8 +55,4 @@ class ProductForm(forms.ModelForm):
             raise ValidationError('Цена не может быть отрицательной')
         return price
 
-    # def clean_image(self):
-    #     email = self.cleaned_data.get('email')
-    #     if not email.endswith('@example.com'):
-    #         raise ValidationError('Email должен оканчиваться на @example.com')
-    #     return email
+

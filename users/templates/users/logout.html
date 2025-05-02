@@ -1,0 +1,23 @@
+{% extends 'catalog/base.html' %}
+{% load my_tags %}
+
+{% block content %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">У Электроника</h1>
+    <p class="lead">Магазин "У Электроника" - это интернет магазин, предлагающий различную электронную бытовую
+        технику</p>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+            <h2>Спасибо, что были с нами!</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <a class="btn btn-primary" href="{% url 'users:login' %}" role="button">Войти снова</a>
+                <a href="{% url 'catalog:catalog' %}" class="btn btn-secondary">В каталог</a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock%}
