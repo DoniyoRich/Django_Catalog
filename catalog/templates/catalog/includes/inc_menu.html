@@ -9,7 +9,10 @@
 <form action="{% url 'users:logout' %}" method="post">
     {% csrf_token %}
     <button type="submit" class="d-flex p-2 btn btn-secondary btn-sm">Выйти</button>
-    <p class="text-warning bg-dark">Добро пожаловать, {{ user.email }}</p>
+    <p class="text-warning bg-dark">Добро пожаловать, {{ user.email }} </p>
+    {% if perms.catalog.can_unpublish_product %}
+     <span class="text-warning bg-dark">(модератор)</span>
+    {% endif %}
 </form>
 {% else %}
 <a class="p-2 btn btn-secondary btn-sm" href="{% url 'users:register' %}">Регистрация</a>
