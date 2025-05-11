@@ -1,9 +1,13 @@
+from django.core.cache import cache
+
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, TemplateView, CreateView, UpdateView, DeleteView
 
+from config.settings import CACHE_ENABLED
 from .forms import CategoryForm, ProductForm, ProductModeratorForm
 from .models import Product, Category
+from .services import get_products_by_category
 
 
 class CatalogList(ListView):
@@ -11,6 +15,46 @@ class CatalogList(ListView):
     model = Product
     template_name = 'catalog/catalog.html'
     context_object_name = 'products'
+
+    def get_queryset(self):
+        if not CACHE_ENABLED:
+            return Product.objects.all()
+        products = 'products_list'
+        cached_products = cache.get(products)
+        if cached_products is not None:
+            return cached_products
+        cached_products = Product.objects.all()
+        cache.set(products, cached_products)
+        return cached_products
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        category = Category.objects.all()
+        context['categories'] = category
+
+        return context
+
+
+class ProductListByCategory(ListView):
+    """ Класс отображения списка продуктов определенной категории. """
+    model = Product
+    template_name = 'catalog/products_by_category.html'
+    context_object_name = 'products'
+
+    def get_queryset(self):
+        return get_products_by_category(self.kwargs.get('pk'))
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        try:
+            category = Category.objects.get(pk=self.kwargs.get('pk'))
+            categories = Category.objects.all()
+            context['category_name'] = category.name
+            context['categories'] = categories
+        except Exception:
+            context['category_name'] = 'отсутствуют'
+        return context
 
 
 class NewCategory(LoginRequiredMixin, CreateView):
