@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.mail import send_mail
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
@@ -45,26 +46,29 @@ class BlogDetail(DetailView):
         return self.object
 
 
-class NewBlog(CreateView):
+class NewBlog(LoginRequiredMixin, CreateView):
     """ Класс добавления новой статьи. """
     model = Blog
     template_name = 'blogs/blog_form.html'
     fields = ['title', 'content', 'image', 'is_published']
     success_url = reverse_lazy('blogs:blogs')
+    login_url = reverse_lazy('users:login')
 
 
-class UpdateBlog(UpdateView):
+class UpdateBlog(LoginRequiredMixin, UpdateView):
     """ Класс изменения данных о статье. """
     model = Blog
     template_name = 'blogs/Blog_form.html'
     fields = ['title', 'content', 'image', 'is_published']
+    login_url = reverse_lazy('users:login')
 
     def get_success_url(self):
         return reverse('blogs:blog_detail', args=[self.kwargs.get('pk')])
 
 
-class DeleteBlog(DeleteView):
+class DeleteBlog(LoginRequiredMixin, DeleteView):
     """ Класс удаления статьи. """
     model = Blog
     template_name = 'blogs/blog_confirm_delete.html'
     success_url = reverse_lazy('blogs:blogs')
+    login_url = reverse_lazy('users:login')

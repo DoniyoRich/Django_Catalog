@@ -8,12 +8,16 @@
         технику</p>
 </div>
 <div class="container">
-    <h2>Новый товар</h2>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Сохранить</button>
-        <a href="{% url 'catalog:catalog' %}" class="btn btn-secondary">Отмена</a>
-    </form>
+    <div class="row">
+        <div class="col-6">
+            <h2>Новый продукт</h2>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+                <a href="{% url 'catalog:catalog' %}" class="btn btn-secondary">Отмена</a>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock%}

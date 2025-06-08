@@ -18,13 +18,22 @@
                 <p class="card-text"><b>Описание</b>: {{ product.description }}</p>
                 <p class="card-text"><b>Категория</b>: {{ product.category }}</p>
                 <p class="card-text"><b>Цена</b>: {{ product.price }} р.</p>
+                {% if product.owner %}
+                <p class="card-text"><b>Владелец</b>: {{ product.owner }}</p>
+                {% else %}
+                <p class="card-text"><b>Владелец</b>: не указан</p>
+                {% endif %}
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                         <a class="btn btn-primary" href="{% url 'catalog:catalog' %}" role="button">В магазин</a>
+                        {% if user.is_authenticated and user.email == product.owner.email %}
                         <a class="btn btn-primary" href="{% url 'catalog:update_product' product.pk %}"
                            role="button">Изменить</a>
+                        {% endif %}
+                        {% if user.is_authenticated and user.email == product.owner.email or perms.catalog.can_unpublish_product %}
                         <a class="btn btn-primary" href="{% url 'catalog:delete_product' product.pk %}"
                            role="button">Удалить</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>

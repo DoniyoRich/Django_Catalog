@@ -1,5 +1,22 @@
 <h5 class="my-0 mr-md-auto font-weight-normal $blue-100" style="color: #ffffff">У Электроника</h5>
 <nav class="ms-5">
-    <a class="p-2 btn btn-primary btn-sm" href="/">Каталог</a>
+    <a class="p-2 btn btn-primary btn-sm" href="/">Все товары</a>
+    <a class="p-2 btn btn-primary btn-sm" href="/new_category/">Новая категория</a>
     <a class="p-2 btn btn-primary btn-sm" href="/new_product/">Новый продукт</a>
+    <a class="p-2 btn btn-primary btn-sm" href="/admin/">Админка</a>
 </nav>
+{% if user.is_authenticated %}
+<form action="{% url 'users:logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit" class="d-flex p-2 btn btn-secondary btn-sm">Выйти</button>
+    <p class="text-warning bg-dark">Добро пожаловать, {{ user.email }} </p>
+    {% if perms.catalog.can_unpublish_product %}
+     <span class="text-warning bg-dark">(модератор)</span>
+    {% endif %}
+</form>
+{% else %}
+<a class="p-2 btn btn-secondary btn-sm" href="{% url 'users:register' %}">Регистрация</a>
+<a class="p-2 btn btn-secondary btn-sm" href="{% url 'users:login' %}">Войти</a>
+{% endif %}
+
+
